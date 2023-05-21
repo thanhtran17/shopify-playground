@@ -46,7 +46,7 @@ export default function HomePage() {
             {/* Dropdown content goes here */}sdf
           </Collapsible>
 
-          <ButtonGroup noWrap connectedTop fullWidth spacing="tight">
+          <ButtonGroup noWrap connectedTop spacing="tight">
             <Button>Bold</Button>
             <Button>Italic</Button>
             <Button>Underline</Button>
