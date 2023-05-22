@@ -1,71 +1,69 @@
-import {
-  Card,
-  Page,
-  Layout,
-  TextContainer,
-  Image,
-  Stack,
-  Link,
-  Text,
-  Button,
-  Icon,
-  Collapsible,
-  ButtonGroup,
-  PageActions,
-} from "@shopify/polaris";
-import { TitleBar } from "@shopify/app-bridge-react";
-import { FoodMajor } from "@shopify/polaris-icons";
-
-import { trophyImage } from "../assets";
-
-import { ProductsCard } from "../components";
-import { useState } from "react";
+import { Card, EmptyState, Layout, Page } from "@shopify/polaris";
+import notFoundImage from "../assets/empty-state.svg";
 
 export default function HomePage() {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleDropdown = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   return (
-    <Page narrowWidth>
-      <TitleBar title="Test Shopify" primaryAction={null} />
+    <Page fullWidth>
       <Layout>
-        <Layout.Section>
-          <Button
-            onClick={toggleDropdown}
-            accessibilityLabel={isOpen ? "Close dropdown" : "Open dropdown"}
-            ariaControls="my-dropdown"
-            ariaExpanded={isOpen}
-          >
-            {isOpen ? "Close Dropdown" : "Open Dropdown"}
-          </Button>
-
-          <Collapsible id="my-dropdown" open={isOpen} transition={{ duration: "150ms", timingFunction: "ease" }} expandOnPrint>
-            {/* Dropdown content goes here */}sdf
-          </Collapsible>
-
-          <ButtonGroup noWrap connectedTop spacing="tight">
-            <Button>Bold</Button>
-            <Button>Italic</Button>
-            <Button>Underline</Button>
-          </ButtonGroup>
-
-          <PageActions
-            primaryAction={{
-              content: "Save",
-            }}
-            secondaryActions={[
-              {
-                content: "Delete",
-                destructive: true,
-              },
-            ]}
-          />
-        </Layout.Section>
+        <Layout.AnnotatedSection
+          id="storeDetails"
+          title="Store details"
+          description="Shopify and your customers will use this information to contact you."
+        >
+          <Card>
+            <Card.Section>
+              <EmptyState heading="There is no page at this address" image={notFoundImage}>
+                <p>Check the URL and try again, or use the search bar to find what you need.</p>
+              </EmptyState>
+            </Card.Section>
+          </Card>
+        </Layout.AnnotatedSection>
       </Layout>
     </Page>
+
+    // <Page narrowWidth>
+    //   <TitleBar title="Test Shopify" primaryAction={null} />
+    //   <Layout>
+    //     <Layout.Section>
+    //       <Button
+    //         onClick={toggleDropdown}
+    //         accessibilityLabel={isOpen ? "Close dropdown" : "Open dropdown"}
+    //         ariaControls="my-dropdown"
+    //         ariaExpanded={isOpen}
+    //       >
+    //         {isOpen ? "Close Dropdown" : "Open Dropdown"}
+    //       </Button>
+
+    //       <Collapsible id="my-dropdown" open={isOpen} transition={{ duration: "150ms", timingFunction: "ease" }} expandOnPrint>
+    //         {/* Dropdown content goes here */}sdf
+    //       </Collapsible>
+
+    //       <ButtonGroup noWrap connectedTop spacing="tight">
+    //         <Button>Bold</Button>
+    //         <Button>Italic</Button>
+    //         <Button>Underline</Button>
+    //       </ButtonGroup>
+
+    //       <PageActions
+    //         primaryAction={{
+    //           content: "Save",
+    //         }}
+    //         secondaryActions={[
+    //           {
+    //             content: "Delete",
+    //             destructive: true,
+    //           },
+    //         ]}
+    //       />
+    //     </Layout.Section>
+    //   </Layout>
+    // </Page>
   );
 }
 
